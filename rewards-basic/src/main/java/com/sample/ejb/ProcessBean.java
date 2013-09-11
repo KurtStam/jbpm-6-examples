@@ -19,8 +19,9 @@ package com.sample.ejb;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.Stateless;
+import javax.ejb.Startup;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
@@ -34,7 +35,8 @@ import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.runtime.manager.cdi.qualifier.Singleton;
 import org.kie.internal.runtime.manager.context.EmptyContext;
 
-@Stateless
+@Startup
+@javax.ejb.Singleton
 @TransactionManagement(TransactionManagementType.BEAN)
 public class ProcessBean implements ProcessLocal {
 
@@ -43,7 +45,13 @@ public class ProcessBean implements ProcessLocal {
 
     @Inject
     @Singleton
-    RuntimeManager singletonManager;
+    private RuntimeManager singletonManager;
+    
+    @PostConstruct
+    public void configure() {
+        // use toString to make sure CDI initializes the bean
+        singletonManager.toString();
+    }
     
     public long startProcess(String recipient) throws Exception {
 
