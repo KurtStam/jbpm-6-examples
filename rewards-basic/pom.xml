@@ -10,17 +10,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <product.version>6.0.0.Beta2</product.version>
+    <product.version>6.0.0.CR3</product.version>
   </properties>
 
   <dependencies>
     <!-- Java EE dependencies -->
-    <dependency>
-      <groupId>javax.ejb</groupId>
-      <artifactId>ejb-api</artifactId>
-      <version>3.0</version>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
       <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -53,7 +47,7 @@
     </dependency>
     <dependency>
       <groupId>org.jbpm</groupId>
-      <artifactId>jbpm-bam</artifactId>
+      <artifactId>jbpm-audit</artifactId>
       <version>${product.version}</version>
     </dependency>
     <dependency>
@@ -63,7 +57,7 @@
     </dependency>
     <dependency>
       <groupId>org.jbpm</groupId>
-      <artifactId>jbpm-human-task-services</artifactId>
+      <artifactId>jbpm-human-task-core</artifactId>
       <version>${product.version}</version>
     </dependency>
     <dependency>
@@ -91,6 +85,12 @@
       <groupId>org.jboss.seam.transaction</groupId>
       <artifactId>seam-transaction</artifactId>
       <version>3.1.0.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.spec.javax.ejb</groupId>
+      <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+      <version>1.0.2.Final</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
